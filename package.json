@@ -1,0 +1,28 @@
+{
+  "name": "studiograines_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test_mysql": "node scripts/db/test_connect.js",
+    "reset_db": "node scripts/db/reset.js",
+    "create_tables_and_populate": "node scripts/db/create_tables.js && node scripts/db/populate_tables.js",
+    "create_front_symlink":"node scripts/front_sync/add_shared_folder.js",
+    "mon": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-jwt": "^6.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.7.2",
+    "nodemon": "^2.0.15"
+  }
+}

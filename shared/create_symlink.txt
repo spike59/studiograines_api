@@ -1,0 +1,8 @@
+A LANCER DANS CMD plutot POWERSHELL c 'est plus simple
+back symlink pour shared
+mklink /J D:\DEV_Formation_CDA\applis_node_react\node_complet_back\shared D:\DEV_Formation_CDA\applis_node_react\node_complet_shared
+front symlink pour shared a placer dans "src"
+mklink /J D:\DEV_Formation_CDA\applis_node_react\node_complet_front\src\shared D:\DEV_Formation_CDA\applis_node_react\node_complet_shared
+
+creation symlink target_symlink origin_shared_folder
+mklink /J D:\DEV_Formation_CDA\applis_node_react\node_complet_front\src\shared D:\DEV_Formation_CDA\applis_node_react\node_complet_back\shared

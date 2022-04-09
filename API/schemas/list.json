@@ -1,0 +1,34 @@
+{
+    "hasOne": {
+      "customer": {
+        "fk": "customer_id",
+        "column": "id",
+        "table": "customer"
+      }
+    },
+    "hasMany": {
+      "list": {
+        "fk": "id",
+        "column": "app_user_id",
+        "table": "list"
+      }
+    },
+    "columns": {
+      "id": {
+        "type": "number",
+        "default": null
+      },
+      "color": {
+        "type": "string",
+        "default": null
+      },
+      "last_edit": {
+        "type": "date",
+        "default": null
+      },
+      "deleted": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  }
