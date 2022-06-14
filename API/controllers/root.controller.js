@@ -10,7 +10,8 @@ class RootController extends BaseController{
 
         this.index = async (req,res) => {
             //console.log("root index controller");
-            return res.status(200).json({message:"homepage bienvenue !"})
+            //return res.status(200).json({message:"homepage bienvenue !"})
+            return({data:{message:"homepage bienvenue !"}})
         }
     }
 }

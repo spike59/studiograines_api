@@ -8,7 +8,9 @@ class BaseRouter {
         this.name = this.constructor.name.replace(`Router`,``);
         this.table = this.name.toLowerCase();
         if (standard){
+            //console.log("add standard controller ct");
             this.ct  = new controllers[this.table]();
+            //console.log("add standard controller ct ok",this);
         }
         
         if ( models[this.table]){

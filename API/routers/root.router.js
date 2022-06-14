@@ -10,6 +10,7 @@ class RootRouter extends BaseRouter{
         this.router.get('/',async (req,res)=>{
             console.log("root router index");
             const response = await this.ct.index(req,res);
+            console.log("root index response",response);
             response?
                 res.status(response.status||200).json(response.data):
                 res.status(500).json({message : "erreur server"});

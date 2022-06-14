@@ -4,6 +4,7 @@ class StartRouting {
     static initialize = (server)=>{
         //route administrées
         for(const route in routers){
+            console.log("!!!add routes /",route);
             server.use(`/${route}`,new routers[route]().router)
         }
         //sinon public main route root /:root_request
