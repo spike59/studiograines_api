@@ -16,7 +16,6 @@ function authorize(roles = []) {
     return [
         // authenticate JWT token and attach user to request object (req.user)
         ejwt({ secret, algorithms: ['HS256'] }),
-        //jwt.verify(token, secret), 
         // authorize based on user role
         (req, res, next) => {
             if (roles.length && !roles.includes(req.user.role)) {
