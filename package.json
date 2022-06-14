@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test_mysql": "node scripts/db/test_connect.js",
+    "test_mysql": "node scripts/db/db_connect.js",
     "reset_db": "node scripts/db/reset.js",
     "create_tables_and_populate": "node scripts/db/create_tables.js && node scripts/db/populate_tables.js",
     "create_front_symlink":"node scripts/front_sync/add_shared_folder.js",
