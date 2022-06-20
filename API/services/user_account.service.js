@@ -4,14 +4,14 @@ const jwt = require('jsonwebtoken');
 //const services = require('../services');
 const {secret} = require('../../config')('app');
 
-class App_userService extends BaseService{
+class User_accountService extends BaseService{
     constructor(){
         super();
-        //this.usersService = new services['app_user'];
+        //this.usersService = new services['user_account'];
     }
 
     async getOneUserByMail(mail){
-        console.log("App_userService getOneUserByMail");
+        console.log("User_accountService getOneUserByMail");
         let key = "email";
         let sql = `SELECT * from ${this.tableName} WHERE (${key} = '${mail}');`;
         console.log("sql",sql);
@@ -82,4 +82,4 @@ class App_userService extends BaseService{
         
     }
 }
-module.exports  = App_userService;
+module.exports  = User_accountService;

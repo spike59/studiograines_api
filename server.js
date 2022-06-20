@@ -20,19 +20,22 @@ const corsOptions = {
 server.use(cors(corsOptions))
 server.use(express.json());
 server.use(cookieParser());
-//auth config
-// server.use(session({
-//     secret:"secret",
-//     resave: false,
-//     saveUninitialized:true,
-// }))
-// server.use(passport.initialize());
-// server.use(passport.session);
 
-// const authUser = require('./API/auth/auth_user');
-// passport.use(new LocalStrategy(authUser));
 //routing init
 require ('./API/routers/start_routing')(server);
+//auth config
+server.use(session({
+    secret:"secret",
+    resave: false,
+    saveUninitialized:true,
+}))
+server.use(passport.initialize());
+server.use(passport.session);
+
+const authUser = require('./API/auth/auth_user');
+passport.use(new LocalStrategy(authUser));
+
+
 
 
 //launch

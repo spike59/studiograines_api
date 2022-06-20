@@ -9,7 +9,7 @@
     "hasMany": {
       "list": {
         "fk": "id",
-        "column": "app_user_id",
+        "column": "user_account_id",
         "table": "list"
       }
     },

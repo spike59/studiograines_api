@@ -4,7 +4,7 @@ const services = require('../services');
 class AuthService extends BaseService{
     constructor(){
         super();
-        this.usersService = new services['app_user'];
+        this.usersService = new services['user_account'];
     }
 
 }

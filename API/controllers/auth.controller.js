@@ -16,12 +16,12 @@ class AuthController extends BaseController{
 
     
         this.register = async (req,res)=>{
-            let usersService = new  services["app_user"]();
+            let usersService = new  services["user_account"]();
             console.log("register user ",req.body);
             const user = await usersService.getOneUserByMail(req.body.email);
             console.log("user ",user);
             if (!user){
-                console.log("appConfig",secret);
+                console.log("auth controller register appConfig secret",secret);
                 const payload = {mail: req.body.email, role: "User", password: req.body.password};
                 const token = jwt.sign(payload, secret, { expiresIn: '1d' });
                 //SEND MAIL
@@ -68,7 +68,7 @@ class AuthController extends BaseController{
             if(payload){
                 //const service = new UserServiceClass();
                 console.log("payload",payload);
-                let usersService = new  services["app_user"]();
+                let usersService = new  services["user_account"]();
                 const password = (await Bcrypt.hash(payload.password,10)).replace(HASH_PREFIX,'')
                 const user = await usersService.insert({email:payload.mail, password, role:payload.role}).catch(e=>{
                     console.log("ERRRO SQL INSERT USER",e);
@@ -88,8 +88,8 @@ class AuthController extends BaseController{
         }
     
         this.authenticate = (req,res,next)=>{
-            console.log("services",services);
-            let usersService = new  services["app_user"]();
+            console.log("auth authenticate services",services);
+            let usersService = new  services["user_account"]();
             console.log("this user service2",usersService);
             usersService.authenticate(req.body)
                 .then(user => user ? res.json(user):res.status(400).json({message:"username or password invalid"}))
@@ -117,7 +117,7 @@ class AuthController extends BaseController{
                     "email":payload.mail,
                     "role":payload.role
                 }
-                //let usersService = new  services["app_user"]();
+                //let usersService = new  services["user_account"]();
                 //const password = (await Bcrypt.hash(payload.password,10)).replace(HASH_PREFIX,'')
                 // const user = await usersService.insert({email:payload.mail, password, role:payload.role}).catch(e=>{
                 //     console.log("ERRRO SQL INSERT USER",e);
@@ -137,7 +137,7 @@ class AuthController extends BaseController{
         }
 
         this.getAllUsers = (req,res,next)=>{
-            let usersService = new  services["app_user"]();
+            let usersService = new  services["user_account"]();
             console.log("this user service2",usersService);
             usersService.getAllUsers()
             .then(users => res.json(users))
@@ -145,7 +145,7 @@ class AuthController extends BaseController{
         }
 
         this.getUser = (req,res,next)=> {
-            let usersService = new  services["app_user"]();
+            let usersService = new  services["user_account"]();
             console.log("this user service2",usersService);
             const currentUser = req.user;
             const id = parseInt(req.params.id)

@@ -10,7 +10,9 @@ class AuthRouter extends BaseRouter{
     }
     add_routes = () => {
         //test get auth/
-        this.router.get("/",async(req,res)=> res.status(200).json({message:"ok"}));
+        this.router.get("/",async(req,res)=> {
+            res.status(200).json({message:"ok"})
+        });
 
         this.router.post('/register',async (req,res)=>{
             console.log("auth/register");

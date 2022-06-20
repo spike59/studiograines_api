@@ -48,25 +48,15 @@ CREATE TABLE account_type(
    PRIMARY KEY(Id_account_type)
 );
 
-CREATE TABLE player_account(
-   player_id INT AUTO_INCREMENT,
-   fullname VARCHAR(255),
-   game_id INT NOT NULL,
-   PRIMARY KEY(player_id),
-   FOREIGN KEY(game_id) REFERENCES game(game_id)
-);
-
 CREATE TABLE user_account(
-   appuser_id INT AUTO_INCREMENT,
+   user_account_id INT AUTO_INCREMENT,
    email VARCHAR(255),
-   password VARCHAR(50),
+   password VARCHAR(255),
    is_active VARCHAR(50),
    role VARCHAR(50),
    Id_account_type INT NOT NULL,
-   player_id INT NOT NULL,
-   PRIMARY KEY(appuser_id, email),
-   FOREIGN KEY(Id_account_type) REFERENCES account_type(Id_account_type),
-   FOREIGN KEY(player_id) REFERENCES player_account(player_id)
+   PRIMARY KEY(user_account_id, email),
+   FOREIGN KEY(Id_account_type) REFERENCES account_type(Id_account_type)
 );
 
 CREATE TABLE report(
@@ -90,7 +80,18 @@ CREATE TABLE report_item(
    FOREIGN KEY(report_id) REFERENCES report(report_id)
 );
 
-CREATE TABLE game_item_datas(
+CREATE TABLE player_account(
+   player_id INT AUTO_INCREMENT,
+   fullname VARCHAR(255),
+   game_id INT NOT NULL,
+   user_account_id INT NOT NULL,
+   email VARCHAR(255) NOT NULL,
+   PRIMARY KEY(player_id),
+   FOREIGN KEY(game_id) REFERENCES game(game_id),
+   FOREIGN KEY(user_account_id, email) REFERENCES user_account(user_account_id, email)
+);
+
+CREATE TABLE se_compose(
    Id_game_item INT,
    Id_data INT,
    PRIMARY KEY(Id_game_item, Id_data),
@@ -98,7 +99,7 @@ CREATE TABLE game_item_datas(
    FOREIGN KEY(Id_data) REFERENCES game_item_data(Id_data)
 );
 
-CREATE TABLE version_game_items(
+CREATE TABLE contient(
    Id_version INT,
    Id_game_item INT,
    PRIMARY KEY(Id_version, Id_game_item),

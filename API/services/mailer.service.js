@@ -30,7 +30,9 @@ class MailerService {
       this.senderAccount = await nodemailer.createTestAccount();
     }
     mailParams.from = this.senderAccount.user;
-
+    console.log("params", params);
+    console.log("mail params ",mailParams);
+    console.log("this.senderAccount ",this.senderAccount);
     const transporter = nodemailer.createTransport({
       host: this.senderAccount.smtp.host,
       port: this.senderAccount.smtp.port,
@@ -75,6 +77,7 @@ class MailerService {
     })
   }
   sendMail = async (params) => {
+    console.log("envoi mail params",params);
     let rr = await MailerService.sendMail(params);
     console.log("rr", rr);
     return rr;

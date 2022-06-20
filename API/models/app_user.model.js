@@ -1,6 +1,6 @@
 const  BaseModel = require( "./base.Model");
 
-class App_userModel extends BaseModel{
+class User_accountModel extends BaseModel{
 
 }
-module.exports = App_userModel;
+module.exports = User_accountModel;
