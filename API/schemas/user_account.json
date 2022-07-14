@@ -1,0 +1,17 @@
+{
+
+    "columns": {
+      "id": {
+        "type": "number",
+        "default": null
+      },
+      "email": {
+        "type": "string",
+        "default": null
+      },
+      "password": {
+        "type": "string",
+        "default": null
+      }
+    }
+  }

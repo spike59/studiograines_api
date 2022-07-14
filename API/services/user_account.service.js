@@ -11,7 +11,7 @@ class User_accountService extends BaseService{
     }
 
     async getOneUserByMail(mail){
-        console.log("User_accountService getOneUserByMail");
+        console.log("User_accountService getOneUserByMail",mail);
         let key = "email";
         let sql = `SELECT * from ${this.tableName} WHERE (${key} = '${mail}');`;
         console.log("sql",sql);

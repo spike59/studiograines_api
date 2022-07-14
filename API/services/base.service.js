@@ -89,6 +89,7 @@ class BaseService{
         })
         values = values.join(',');
         const sql = `INSERT INTO ${this.table} (${columns}) VALUES ${values};`;
+        console.log("sql insert ",sql);
         const result = await BaseService.executeQuery(sql);
         const rows = await this.select({where:`id >= ${result.insertId} && id < ${result.insertId + result.affectedRows}`});
         return rows;
@@ -99,6 +100,7 @@ class BaseService{
         const columns = Object.keys(object.getProps()).join(',');
         const values = Object.values(object.getSqlProps()).join(',')
         const sql = `INSERT INTO ${this.table} (${columns}) VALUES (${values});`;
+        console.log("sql insert ",sql);
         const result = await BaseService.executeQuery(sql);
         const rows = await this.select({where:`id=${result.insertId}`});
         return rows.length === 1 ? rows.pop() : null;

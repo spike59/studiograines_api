@@ -73,8 +73,9 @@ class AuthController extends BaseController{
                 const user = await usersService.insert({email:payload.mail, password, role:payload.role}).catch(e=>{
                     console.log("ERRRO SQL INSERT USER",e);
                     return res.status(400).json({message:"erreur sql"})
+                    
                 });
-                console.log("user id",user.id);
+                //console.log("user id",user.id);
                 
                 return user ?
                     res.status(200).json({user_id:user.id}):
